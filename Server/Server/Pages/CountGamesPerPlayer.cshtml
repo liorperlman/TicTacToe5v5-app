@@ -1,0 +1,41 @@
+﻿@page
+@model Server.Pages.CountGamesPerPlayerModel
+@{
+    ViewData["Title"] = "Count Games Per Player";
+}
+
+<h1>Queries</h1>
+
+
+<h4 class="mb-3 mt-3">Games Count per Player</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.playerExts[0].Pid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.playerExts[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.playerExts[0].GameCount)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.playerExts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameCount)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

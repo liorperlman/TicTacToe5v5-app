@@ -1,0 +1,68 @@
+﻿@page
+@model Server.Pages.Query2Model
+@{
+}
+
+<h1>Queries</h1>
+
+
+<h4 class="mb-3 mt-3">Players table by game count</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.players[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.players[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.players[0].Password)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+            <th>
+                @Model.MaxCount Games:
+            </th>
+        </tr>
+         @for(int i = Model.MaxCount; i >= 0; i--) 
+        {    
+            @foreach (var item in Model.playerExts)
+            {
+                @if (item.GameCount != i)
+                {
+                    continue;
+                }
+                else
+                {
+                    @if (Model.TempCount != i)
+                    {
+                        Model.TempCount = i;
+                        <tr style="border-top:1px solid lightgrey">
+                            <th style="border-top:1px solid lightgrey">
+                                @Model.TempCount Games:
+                            </th>
+                        </tr>
+                    }   
+                
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                    </tr>
+                
+                    Model.TempCount = item.GameCount;
+               }
+            }
+        }
+    </tbody>
+</table>

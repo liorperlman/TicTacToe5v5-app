@@ -1,0 +1,20 @@
+﻿@page
+@model Server.Pages.SpecificPlayerGamesModel
+@{
+    ViewData["Title"] = "Specific Player Games";
+}
+
+<h1>Specific Player Games</h1>
+
+<p>Select player from the combo box to see his games</p>
+
+<form action="~/Query1" method="post">
+    <div class="form-group">
+        @Html.DropDownListFor(m => m.playerEmail,
+                    new SelectList(Model.players.Select(x => x.Email).ToList()),
+                    "Select Player")
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Show Data" class="btn btn-primary" />
+    </div>
+</form>

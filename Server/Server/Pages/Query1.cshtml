@@ -1,0 +1,43 @@
+﻿@page
+@model Server.Pages.Query1Model
+@{
+	ViewData["Title"] = "Query1";
+}
+
+
+<h1>Games played by @Model.player.Email</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.games[0].PlayerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.games[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.games[0].Result)
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.games)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlayerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Result)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="SpecificPlayerGames">Back to specific player games menu</a>
+</div>
